@@ -142,15 +142,30 @@ public class ArvoreBinaria {
         if (noAtual == null) {
             return -1;
         }
+
         int alturaEsquerda = alturaRecursivo(noAtual.esquerdo);
         int alturaDireita = alturaRecursivo(noAtual.direito);
         return Math.max(alturaEsquerda, alturaDireita) + 1;
     }
 
     // b. Altura de um nó
+    private int alturaRecursivo(No noAtual, int valor, int alturaAtual) {
+        if (noAtual == null) {
+            return -1;
+        }
+    
+        if (noAtual.valor == valor) {
+            return alturaAtual;
+        }
+    
+        int alturaEsquerda = alturaRecursivo(noAtual.esquerdo, valor, alturaAtual + 1);
+        int alturaDireita = alturaRecursivo(noAtual.direito, valor, alturaAtual + 1);
+    
+        return Math.max(alturaEsquerda, alturaDireita);
+    }
+    
     public int alturaNo(int valor) {
-        No no = buscar(valor);
-        return alturaRecursivo(no);
+        return alturaRecursivo(raiz, valor, 0);
     }
 
     // c. Nós folha

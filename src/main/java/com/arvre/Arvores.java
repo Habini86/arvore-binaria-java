@@ -11,6 +11,26 @@ public class Arvores {
             arvore.inserir(i);
         }
 
-        arvore.emordem(arvore.getRaiz());
+        System.out.println("Altura arvre: " + arvore.altura());
+        System.out.println();
+
+        System.out.println("Altura do nó 13 da arvre: " + arvore.alturaNo(13));
+        System.out.println();
+
+        System.out.println("Nós folhas: ");
+        arvore.nosFolha();
+        System.out.println();
+
+        System.out.println("Nós Internos: ");
+        arvore.nosInternos();
+        System.out.println();
+
+        System.out.println("Somente os valores ímpares e menores de 23 em ordem: ");
+        arvore.imparesMenores23();
+        System.out.println();
+
+        System.out.println("Somente os valores pares e maiores de 14 em pós-orden: ");
+        arvore.paresMaiores14();
+        System.out.println();
     }
 }
