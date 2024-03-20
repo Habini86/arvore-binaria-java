@@ -132,4 +132,84 @@ public class ArvoreBinaria {
             }
         }
     }
+
+    // a. Altura da árvore
+    public int altura() {
+        return alturaRecursivo(raiz);
+    }
+
+    private int alturaRecursivo(No noAtual) {
+        if (noAtual == null) {
+            return -1;
+        }
+        int alturaEsquerda = alturaRecursivo(noAtual.esquerdo);
+        int alturaDireita = alturaRecursivo(noAtual.direito);
+        return Math.max(alturaEsquerda, alturaDireita) + 1;
+    }
+
+    // b. Altura de um nó
+    public int alturaNo(int valor) {
+        No no = buscar(valor);
+        return alturaRecursivo(no);
+    }
+
+    // c. Nós folha
+    public void nosFolha() {
+        nosFolhaRecursivo(raiz);
+    }
+
+    private void nosFolhaRecursivo(No noAtual) {
+        if (noAtual != null) {
+            if (noAtual.esquerdo == null && noAtual.direito == null) {
+                System.out.println(noAtual.valor);
+            }
+            nosFolhaRecursivo(noAtual.esquerdo);
+            nosFolhaRecursivo(noAtual.direito);
+        }
+    }
+
+    // d. Nós internos
+    public void nosInternos() {
+        nosInternosRecursivo(raiz);
+    }
+
+    private void nosInternosRecursivo(No noAtual) {
+        if (noAtual != null) {
+            if (noAtual.esquerdo != null || noAtual.direito != null) {
+                System.out.println(noAtual.valor);
+            }
+            nosInternosRecursivo(noAtual.esquerdo);
+            nosInternosRecursivo(noAtual.direito);
+        }
+    }
+
+    // e. Valores ímpares menores que 23 em ordem
+    public void imparesMenores23() {
+        imparesMenores23Recursivo(raiz);
+    }
+
+    private void imparesMenores23Recursivo(No noAtual) {
+        if (noAtual != null) {
+            imparesMenores23Recursivo(noAtual.esquerdo);
+            if (noAtual.valor < 23 && noAtual.valor % 2 != 0) {
+                System.out.println(noAtual.valor);
+            }
+            imparesMenores23Recursivo(noAtual.direito);
+        }
+    }
+
+    // f. Valores pares maiores que 14 em pós-ordem
+    public void paresMaiores14() {
+        paresMaiores14Recursivo(raiz);
+    }
+
+    private void paresMaiores14Recursivo(No noAtual) {
+        if (noAtual != null) {
+            paresMaiores14Recursivo(noAtual.esquerdo);
+            paresMaiores14Recursivo(noAtual.direito);
+            if (noAtual.valor > 14 && noAtual.valor % 2 == 0) {
+                System.out.println(noAtual.valor);
+            }
+        }
+    }
 }
